@@ -1,23 +1,42 @@
 Windows Registry Editor Version 5.00
-;Visual-Studio-Code-Add-context-menu-windows
 
-; Open files
+; ========================================
+; Visual Studio Code - Add Context Menu in Windows
+; Este script agrega opciones al menú contextual de Windows para abrir archivos y carpetas con Visual Studio Code.
+; ========================================
+
+; ========================================
+; Opción para abrir archivos con Visual Studio Code
+; Esta sección agrega una opción al menú contextual para abrir cualquier archivo con VS Code.
+; Cuando el usuario hace clic derecho sobre un archivo, verá la opción "Edit with VS Code".
+; ========================================
 [HKEY_CLASSES_ROOT\*\shell\Open with VS Code]
-@="Edit with VS Code"
-"Icon"="C:\\Program Files\\Microsoft VS Code\\Code.exe,0"
+@="Edit with VS Code"  ; Este es el texto que se muestra en el menú contextual.
+"Icon"="C:\\Program Files\\Microsoft VS Code\\Code.exe,0"  ; Establece el ícono que se mostrará junto a la opción. Puedes eliminar esta línea si no quieres un ícono personalizado.
+
 [HKEY_CLASSES_ROOT\*\shell\Open with VS Code\command]
-@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%1\""
-; This will make it appear when you right click ON a folder
-; The "Icon" line can be removed if you don't want the icon to appear
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%1\""  ; El comando que se ejecuta al seleccionar la opción. "%1" representa el archivo seleccionado.
+
+; ========================================
+; Opción para abrir carpetas como proyectos de Visual Studio Code
+; Esta sección agrega una opción al menú contextual de carpetas. Cuando el usuario hace clic derecho sobre una carpeta, verá la opción "Open Folder as VS Code Project".
+; Esto abrirá la carpeta en VS Code como un proyecto.
+; ========================================
 [HKEY_CLASSES_ROOT\Directory\shell\vscode]
-@="Open Folder as VS Code Project"
-"Icon"="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\",0"
+@="Open Folder as VS Code Project"  ; Este es el texto que aparece en el menú contextual de las carpetas.
+"Icon"="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\",0"  ; Establece el ícono que se mostrará junto a la opción. Puedes eliminar esta línea si no deseas un ícono.
+
 [HKEY_CLASSES_ROOT\Directory\shell\vscode\command]
-@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%1\""
-; This will make it appear when you right click INSIDE a folder
-; The "Icon" line can be removed if you don't want the icon to appear
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%1\""  ; El comando que se ejecuta al seleccionar la opción. "%1" representa la carpeta seleccionada.
+
+; ========================================
+; Opción para abrir carpetas haciendo clic en el fondo de una ventana del explorador
+; Esta sección agrega una opción al menú contextual que aparece cuando se hace clic derecho en el fondo de una ventana del explorador de archivos (sin seleccionar un archivo o carpeta).
+; El texto de la opción será "Open Folder as VS Code Project", y abrirá la carpeta actual como proyecto en VS Code.
+; ========================================
 [HKEY_CLASSES_ROOT\Directory\Background\shell\vscode]
-@="Open Folder as VS Code Project"
-"Icon"="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\",0"
+@="Open Folder as VS Code Project"  ; Este es el texto que aparece cuando haces clic en el fondo de una ventana de carpeta.
+"Icon"="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\",0"  ; Establece el ícono que se mostrará junto a la opción. Puedes eliminar esta línea si no deseas un ícono.
+
 [HKEY_CLASSES_ROOT\Directory\Background\shell\vscode\command]
-@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%V\""
+@="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%V\""  ; El comando que se ejecuta al seleccionar la opción. "%V" representa la ruta de la carpeta abierta en el fondo de la ventana.
